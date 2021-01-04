@@ -26,7 +26,7 @@ function Thread() {
       db.collection("threads")
         .doc(threadId)
         .collection("messages")
-        .orderBy("timestamp", "desc")
+        .orderBy("timestamp", "asc")
         .onSnapshot((snapshot) =>
           setMessages(
             snapshot.docs.map((doc) => ({
@@ -64,6 +64,7 @@ function Thread() {
           <MoreVert className="thread__header__details" />
         </IconButton>
       </div>
+
       <div className="thread__messages">
         {messages.map(({ id, data }) => (
           <Message key={id} data={data} />
